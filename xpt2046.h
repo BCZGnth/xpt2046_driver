@@ -9,4 +9,17 @@
 #define XPT_SER	    0x04
 #define XPT_DEF	    0x03
 
+typedef struct {
+    uint16_t x;
+    uint16_t y;
+} Touch;
+
+
+typedef struct {
+    uint16_t xs;
+    uint16_t xe;
+    uint16_t ys;
+    uint16_t ye;
+} TouchBox;
+
 #endif
