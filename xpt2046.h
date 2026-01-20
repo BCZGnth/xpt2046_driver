@@ -1,6 +1,8 @@
 #ifndef _XPS2046
 #define _XPS2046
 
+#include "system.h"
+
 #define MAX_LEN     3
 #define	XPT_START   0x80
 #define XPT_XPOS    0x50
@@ -21,5 +23,9 @@ typedef struct {
     uint16_t ys;
     uint16_t ye;
 } TouchBox;
+
+uint16_t xpt_getit(uint8_t cmd);
+bool xpt_touch_getxy(Touch * t);
+bool xpt_is_touch_in_box(Touch t, TouchBox tb);
 
 #endif
