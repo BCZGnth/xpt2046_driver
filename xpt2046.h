@@ -22,6 +22,7 @@ typedef struct {
     uint16_t xe;
     uint16_t ys;
     uint16_t ye;
+    uint8_t key;
 } TouchBox;
 
 uint16_t xpt_getit(uint8_t cmd);

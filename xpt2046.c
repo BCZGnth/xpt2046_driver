@@ -103,13 +103,24 @@ bool xpt_is_touch_in_box(Touch t, TouchBox tb) {
     return false;
 }
 
+/**
+ * @author: Ben Good
+ * 
+ * @param t: the coordinates of the touch 
+ * @param p_tb: The pointer to the list of touchboxes
+ * @param tb_len: the length of the touchbox list
+ * 
+ * @return Key of the touchbox unless no key is found.
+ * @return Returns 255 if no key is found.
+ */
 uint8_t xpt_is_touch_in_box_list(Touch t, TouchBox* p_tb, size_t tb_len) {
     
     for(uint8_t i = 0; i < tb_len; i++) {
         if( xpt_is_touch_in_box(t, *(p_tb + i) )  ) {
-            return i;
+            return (p_tb + i)->key;
         }
     }
 
+    /* Error Case Returns 255*/
     return 255;
 }
