@@ -77,6 +77,9 @@ Touch scale_touch_to_screen(uint16_t raw_x, uint16_t raw_y) {
     return result;
 }
 
+/** 
+ * Returns TRUE on a valid read
+ */
 bool xpt_touch_getxy(Touch* t) {
     // int level = gpio_get_level(dev->_irq);
     // ESP_LOGD(__FUNCTION__, "gpio_get_level=%d", level);
@@ -114,9 +117,14 @@ bool xpt_is_touch_in_box(Touch t, TouchBox tb) {
  * @return Returns 255 if no key is found.
  */
 uint8_t xpt_is_touch_in_box_list(Touch t, TouchBox* p_tb, size_t tb_len) {
+
+    TouchBox test_tb;
     
     for(uint8_t i = 0; i < tb_len; i++) {
-        if( xpt_is_touch_in_box(t, *(p_tb + i) )  ) {
+
+        test_tb = *(p_tb + i);
+
+        if( xpt_is_touch_in_box(t, test_tb) ) {
             return (p_tb + i)->key;
         }
     }
